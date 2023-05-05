@@ -6,18 +6,22 @@ export default function App() {
   const [address, setAddress] = useState("edin st");
   const [phone, setPhone] = useState("0990532059");
   const [email, setEmail] = useState("io@live.it");
+  const [complaint, setComplaint] = useState("");
+
   //TODO: Add your state fields here
 
+  // const [phoneBox, setPhoneBox] = useState("");
+  // const [emailBox, setEmailBox] = useState("");
   // This will handle the changing 'name/input' and bc of how it's logged, it'll log as an object.
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({ name, address, phone, email }); // Name is a string and here we're logging an object with name as property.
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log({ name, address, phone, email, complaint }); // Name etc, is a string and here we're logging an object with name as property.
   };
 
   // This will handle our input having a console.log for each press on the keyboard
-  const handleChangeName = (e) => {
-    console.log(e.target.value);
-    setName(e.target.value);
+  const handleChangeName = (name) => {
+    console.log(name.target.value);
+    setName(name.target.value);
   };
 
   const handleChangeAddress = (add) => {
@@ -34,6 +38,19 @@ export default function App() {
     console.log(em.target.value);
     setEmail(em.target.value);
   };
+
+  const handleComplaint = (compl) => {
+    setComplaint(compl.target.value);
+  };
+  // const handlePhoneBox = (phoneBox) => {
+  //   console.log(phoneBox.target.value);
+  //   setPhoneBox(phoneBox.target.value);
+  // };
+
+  // const handleEmailBox = (emailBox) => {
+  //   console.log(emailBox.target.value);
+  //   setEmailBox(emailBox.target.value);
+  // };
 
   return (
     <>
@@ -87,28 +104,49 @@ export default function App() {
               name="complaint"
               rows="10"
               placeholder="You can complain here"
+              onChange={handleComplaint}
             ></textarea>
           </label>
 
           <div className="form__radio-group">
             <p>How do you want to be contacted? </p>
             <label>
-              <input type="radio" name="contact" value="phone" />
+              <input
+                type="radio"
+                name="contact"
+                value="phone"
+                // onChange={handlePhoneBox}
+              />
               Phone
             </label>
 
             <label>
-              <input type="radio" name="contact" value="email" />
+              <input
+                type="radio"
+                name="contact"
+                value="email"
+                // onChange={handleEmailBox}
+              />
               Email
             </label>
 
             <label>
-              <input type="radio" name="contact" value="post" />
+              <input
+                type="radio"
+                name="contact"
+                value="post"
+                // onChange={handlePostBox}
+              />
               Slow Mail
             </label>
 
             <label>
-              <input type="radio" name="contact" value="none" />
+              <input
+                type="radio"
+                name="contact"
+                value="none"
+                // onChange={handleNoContBox}
+              />
               No contact!
             </label>
           </div>
