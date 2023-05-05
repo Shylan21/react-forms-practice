@@ -2,17 +2,32 @@ import { useState } from "react";
 import "./App.css";
 
 export default function App() {
-  
   //TODO: Add your state fields here
 
+  const [name, setName] = useState("Isabelle");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ name });
+  };
+
+  const handleChangeName = (e) => {
+    console.log(e.target.value);
+    setName(e.target.value);
+  };
   return (
     <>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <h2>Complaining form!</h2>
         <div className="form__section-left">
           <label>
             Full name
-            <input type="text" name="name" required />
+            <input
+              type="text"
+              name="name"
+              required
+              onChange={handleChangeName}
+              value={name}
+            />
           </label>
           <label>
             Address
