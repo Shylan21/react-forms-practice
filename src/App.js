@@ -4,12 +4,14 @@ import "./App.css";
 export default function App() {
   //TODO: Add your state fields here
 
+  // This will handle the changing 'name/input' and bc of how it's logged, it'll log as an object.
   const [name, setName] = useState("Isabelle");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ name });
+    console.log({ name }); // Name is a string and here we're logging an object with name as property.
   };
 
+  // This will handle our input having a console.log for each press on the keyboard 
   const handleChangeName = (e) => {
     console.log(e.target.value);
     setName(e.target.value);
@@ -26,7 +28,7 @@ export default function App() {
               name="name"
               required
               onChange={handleChangeName}
-              value={name}
+              // value={name} // This will have as a value at every load, the name we have in useState.
             />
           </label>
           <label>
